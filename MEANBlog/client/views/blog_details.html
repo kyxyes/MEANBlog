@@ -1,4 +1,32 @@
 <!doctype html>
+<div class="container">
+    <h1><a href='#/'>Blog Home</a> | Blog Post Details</h1>
+    <br>
+    <h2>{{post.title}}</h2>
+    Posted {{post.data}} <i> By {{post.author}}</i><br>
+    <hr>
+    <div ng-bind-html="post.body"></div>
+    <em>Filed Under</em>: <i ng-repeat="tag in post.tags">{{tag}}</i>
+    <br>
+    <h3>Comment:</h3>
+    <div ng-repeat="comment in post.comments">
+        Author:{{comment.author}}<br>
+        {{comment.body}}
+        <hr>
+    </div>
+    <h3>Add a comment</h3>
+    <form>
+        <b>Name</b><br>
+        <input type="text" name="commentName" size = "60" value=""><br>
+        <b>Email</b><br>
+        <input type="text" name="commentEmail" size ="60" value=""><br>
+        <b>Comment</b><br>
+        <textarea name="commentBody" cols="60" rows="10"></textarea>
+        <br>
+        <input type="submit" value="Submit">
+        
+    </form>
+</div>
 
-hello welcome to my blog deteils
+
 

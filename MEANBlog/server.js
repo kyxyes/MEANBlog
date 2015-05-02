@@ -11,7 +11,11 @@ var postSchema = mongoose.Schema({
     author:String,
     title:String,
     tags:[String],
-    comments:{type:String}
+    //comments:{type:String}  if so, the data extracted from mongo will show in wrong way like  "[object Object...]"
+    //comments:String or you can just not define it, there will be no problem
+    comments:[{body:String,
+               email:String,
+               author:String}]
 });
 
 var Post = mongoose.model('Post',postSchema);
@@ -32,6 +36,18 @@ app.get('/displayMainPagePosts', function(req,res){
     query.exec(function(err,posts){
         if(err) throw err;
         res.send(posts);
+    });
+});
+
+
+//=========getPostDetailsByPermalink============
+app.get('/getPostDetailsByPermalink/:permalink', function(req,res){
+    var permalink = req.params.permalink;
+    Post.find({'permalink':permalink}, function(err, post){
+        if(err) throw err;
+        else{
+            res.send(post);
+        }
     });
 });
 
