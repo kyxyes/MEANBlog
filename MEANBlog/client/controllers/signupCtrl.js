@@ -5,6 +5,6 @@ angular.module('MEANBlog')
          var newuser = {username:$scope.username,
                         password:$scope.password,
                         email:$scope.email}
-         $http.post('/signup',user);
+         $http.post('/signup',newuser);
      }
     }]);
