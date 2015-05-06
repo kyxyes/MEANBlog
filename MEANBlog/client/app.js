@@ -9,6 +9,14 @@ angular.module('MEANBlog',['ngRoute','ngMessages','ngResource','ngSanitize'])
                 templateUrl:'views/blog_details.html',
                 controller:'blogDetailsCtrl'
             })
+            .when('/login',{
+                templateUrl:'views/login.html',
+                controller:'loginCtrl'
+            })
+            .when('/signup',{
+                templateUrl:'views/signup.html',
+                controller:'signupCtrl'
+            })
             ;
     });
 

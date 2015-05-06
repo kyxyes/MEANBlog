@@ -5,10 +5,14 @@
 </head>
 
 <div>
-    <div class="container">
-    <ul>
+    <div class="container" >
+    <ul >
         <li ng-if="username">Welcome{{username}}</li>
-        <li ng-if="!username">You are not login</li>
+        <li ng-if="username"><a href="">Logout</a> </li>
+        <li ng-if="username"><a href="">New Post</a> </li>
+        <li ng-if="!username">You are not login |</li>
+        <li ng-if="!username"><a href="#/login"> Login |</a></li>
+        <li ng-if="!username"><a href="#/signup"> SignUp</a></li>
     </ul>
     </div>
 </div>
@@ -21,4 +25,14 @@
 <script src="app.js"></script>
 <script src="controllers/displayPostCtrl.js"></script> <!--can not in front of angular.js-->
 <script src="controllers/blogDetailsCtrl.js"></script>
+<script src="controllers/loginCtrl.js"></script>
+<script src="controllers/signupCtrl.js"></script>
 </html>
+
+
+<style type="text/css">
+    li
+{
+display:inline;
+}
+</style>

@@ -15,16 +15,15 @@
         <hr>
     </div>
     <h3>Add a comment</h3>
-    <form>
-        <b>Name</b><br>
-        <input type="text" name="commentName" size = "60" value=""><br>
-        <b>Email</b><br>
-        <input type="text" name="commentEmail" size ="60" value=""><br>
+    <form method ng-submit="postSubmit()" name="commentPost">
+        <b>Name(required)</b><br>
+        <input type="text" name="commentName" ng-model="commentName" size = "60" value="" required><br>
+        <b>Email(optional)</b><br>
+        <input type="text" name="commentEmail" ng-model="commentEmail" size ="60" value=""><br>
         <b>Comment</b><br>
-        <textarea name="commentBody" cols="60" rows="10"></textarea>
+        <textarea name="commentBody" ng-model="commentBody" cols="60" rows="10"></textarea>
         <br>
         <input type="submit" value="Submit">
-        
     </form>
 </div>
 
