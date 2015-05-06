@@ -4,7 +4,7 @@ angular.module('MEANBlog')
      $scope.signup = function(){
          var newuser = {username:$scope.username,
                         password:$scope.password,
-                        email:$scope.email}
-         $http.post('/signup',user);
+                        email:$scope.email}       //ng-model
+         $http.post('/signup',newuser);
      }
     }]);

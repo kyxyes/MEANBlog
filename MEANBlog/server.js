@@ -5,6 +5,7 @@ var path = require('path');
 var mongoose = require('mongoose');
 
 var userSchema = mongoose.Schema({
+    username:String,
     password:String,
     email:String
 });
@@ -72,13 +73,36 @@ app.all('/postComments/:permalink',function(req,res){
     });
 });
 
+//=========signin=======================
+app.post('/login',function(req,res){
+    var username = req.body.username;
+    var password = req.body.password;
+    User.findOne({'username':username},function(err,data){
+        if(err) throw err;
+        if(!data) return res.status(401).send({ message: { username: 'Incorrect username' } });
+        else if(data.password!=password) return res.status(401).send({message:{password:'Incorrect password'}});
+        else res.send({username:username});
+    });
+    //====1
+    //res.send({token:token, user: user});
+    //in angularJS:$window.localStorage.currentUser = JSON.stringify(response.data.user);
+    //$rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
+    //====2
+    //after check in db and compare the match
+    //backend can start a session ('_id:hash,username:username') insert this session into db
+    //then response it as cookie back to frontend, so front end can judge which username according to session _id
+});
+
+
+
+
 //=========signup========================
 app.post('/signup',function(req,res){
     var username = req.body.username;
     var password = req.body.password;
     var email = req.body.email;
     var user = new User({
-        "_id":username,
+        "username":username,
         "password":password,
         "email":email
     });
